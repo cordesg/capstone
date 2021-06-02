@@ -23,7 +23,7 @@ pipeline {
         stage('Publish') {
             steps {
                   echo "${pwd()}"
-                   dockerApp = docker.build("cordesg/capstone") 
+                   docker.build("cordesg/capstone") 
                 }
             }
             stage('Remove') {
