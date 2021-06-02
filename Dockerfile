@@ -8,7 +8,7 @@ ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/
 ADD tomcat-users.xml /usr/local/tomcat/conf/
 #Add .war file     
 ADD capstone.war /usr/local/tomcat/webapps/
-#Expose the tomcat server port.
+#Expose the tomcat server port at 8080.
 EXPOSE 8080
 #Start tomcat
 CMD ["catalina.sh", "run"]  
