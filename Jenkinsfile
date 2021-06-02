@@ -1,6 +1,6 @@
 pipeline {
         
-    agent {dockerfile true}
+    agent 
     
 
     stages {
@@ -23,7 +23,7 @@ pipeline {
         stage('Publish') {
             steps {
                   echo "${pwd()}"
-                   //dockerApp = docker.build() 
+                   dockerApp = docker.build("testWeb") 
                 }
             }
             stage('Remove') {
