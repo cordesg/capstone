@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                   dockerApp = docker.build() 
+                  echo "${pwd()}"
+                   //dockerApp = docker.build() 
                 }
             }
             stage('Remove') {
