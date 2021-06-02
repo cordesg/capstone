@@ -7,7 +7,7 @@ RUN mv webapps.dist/ webapps
 ADD ./tomcatMods/context.xml /usr/local/tomcat/webapps/manager/META-INF/
 ADD ./tomcatMods/tomcat-users.xml /usr/local/tomcat/conf/
 #Add .war file     
-ADD capstone.war /usr/local/tomcat/webapps/
+ADD ./target/capstone.war /usr/local/tomcat/webapps/
 #Expose the tomcat server port at 8080.
 EXPOSE 8080
 #Start tomcat
