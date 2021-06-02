@@ -20,6 +20,7 @@ pipeline {
         }
         stage('ConstructWAR') {
             steps {
+                echo "${pwd()}"
               //sh "mvn -DskipTests package"
             }
         }
