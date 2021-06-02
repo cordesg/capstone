@@ -26,7 +26,7 @@ pipeline {
         stage('DockerBuild') {
             steps {
                script {
-                   def dockerApp = docker.build("testweb" + ":$BUILD_NUMBER") 
+                   dockerApp = docker.build("testweb" + ":$BUILD_NUMBER") 
                   }
                 }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                script {
                    docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds") {
-                    dockerApp.push()
+                   dockerApp.push()
                    }
                   }
                 }
