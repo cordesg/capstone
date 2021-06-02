@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    def dockerApp
+    
+    agent {dockerfile true}
+    
 
     stages {
         stage('Build') {
@@ -20,7 +23,7 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                    echo "${pwd()}"
+                   dockerApp = docker.build() 
                 }
             }
             stage('Remove') {
