@@ -33,8 +33,9 @@ pipeline {
        stage('DockerPublish') {
             steps {
                script {
-                   dockerApp = docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds")
-                   dockerApp.push()
+                   docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds") {
+                    dockerApp.push()
+                   }
                   }
                 }
         }
