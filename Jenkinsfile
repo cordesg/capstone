@@ -17,6 +17,7 @@ pipeline {
                     junit "**/*.xml"
                 }
             }
+        }
         stage('ConstructWAR') {
             steps {
               sh "mvn package"
@@ -43,12 +44,13 @@ pipeline {
                     echo "${pwd()}"
                 }
         }
-            stage('Deploy') {
+        
+        stage('Deploy') {
                 steps {
                     echo "${pwd()}"
                 }
-            }
         }
+    }    
 
 }
 
