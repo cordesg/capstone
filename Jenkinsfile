@@ -2,7 +2,6 @@ pipeline {
         
     agent any
     
-
     stages {
         stage('Build') {
             steps {
@@ -17,22 +16,33 @@ pipeline {
                 always {
                     junit "**/*.xml"
                 }
-
+            }
+        stage('ConstructWAR') {
+            steps {
+              sh "mvn package"
             }
         }
-        stage('Publish') {
+        stage('DockerBuild') {
             steps {
-                  
-                  script {
-                   dockerApp = docker.build("testweb") 
+               script {
+                   def dockerApp = docker.build("testweb" + :$BUILD_NUMBER) 
                   }
                 }
-            }
-            stage('Remove') {
+        }
+       stage('DockerPublish') {
+            steps {
+               script {
+                   dockerApp = docker.withRegistry('', "dockerhubcreds")
+                   dockerApp.push()
+                  }
+                }
+        }
+
+        stage('Remove') {
                 steps {
                     echo "${pwd()}"
                 }
-            }
+        }
             stage('Deploy') {
                 steps {
                     echo "${pwd()}"
