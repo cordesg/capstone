@@ -26,7 +26,7 @@ pipeline {
         stage('DockerBuild') {
             steps {
                script {
-                   dockerApp = docker.build("testweb" + ":$BUILD_NUMBER") 
+                   dockerApp = docker.build("cordesg/testweb" + ":$BUILD_NUMBER") 
                   }
                 }
         }
