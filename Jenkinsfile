@@ -20,8 +20,7 @@ pipeline {
         }
         stage('ConstructWAR') {
             steps {
-                echo "${pwd()}"
-              //sh "mvn -DskipTests package"
+              sh "mvn -DskipTests package"
             }
         }
         stage('DockerBuild') {
