@@ -43,9 +43,7 @@ pipeline {
 
         stage('Remove') {
                 steps {
-                    sh "docker stop $(docker ps -q)"
-                    sh "docker rm $(docker ps -a -q)" 
-                    sh "docker rmi $(docker images -q -f dangling=true)"
+                    sh "docker stop \$(docker ps -q) || docker rm \$(docker ps -a -q) || docker rmi \$(docker images -q -f dangling=true)"
                 }
         }
         
