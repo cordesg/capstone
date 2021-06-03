@@ -1,0 +1,406 @@
+Started by user jenkins
+Obtained Jenkinsfile from git https://github.com/cordesg/capstone.git
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/CapstonePipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/CapstonePipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/cordesg/capstone.git # timeout=10
+Fetching upstream changes from https://github.com/cordesg/capstone.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.31.1'
+ > git fetch --tags --force --progress -- https://github.com/cordesg/capstone.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision f59dd2feeb4a7065e0d6e73314bbd119875abd81 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f f59dd2feeb4a7065e0d6e73314bbd119875abd81 # timeout=10
+Commit message: "test"
+ > git rev-list --no-walk f9a4184d96888f78bbebe42a3e7454a7ab156f84 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ mvn clean compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.capstone:capstone >------------------------
+[INFO] Building capstone 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ capstone ---
+[INFO] Deleting /var/lib/jenkins/workspace/CapstonePipeline/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ capstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ capstone ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /var/lib/jenkins/workspace/CapstonePipeline/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.389 s
+[INFO] Finished at: 2021-06-02T22:26:30-05:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.capstone:capstone >------------------------
+[INFO] Building capstone 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ capstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ capstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ capstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CapstonePipeline/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ capstone ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/CapstonePipeline/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ capstone ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.capstone.CapstoneApplicationTests
+22:26:37.705 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+22:26:37.716 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+22:26:37.768 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.capstone.CapstoneApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+22:26:37.783 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.capstone.CapstoneApplicationTests], using SpringBootContextLoader
+22:26:37.787 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.capstone.CapstoneApplicationTests]: class path resource [com/capstone/CapstoneApplicationTests-context.xml] does not exist
+22:26:37.789 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.capstone.CapstoneApplicationTests]: class path resource [com/capstone/CapstoneApplicationTestsContext.groovy] does not exist
+22:26:37.789 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.capstone.CapstoneApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+22:26:37.790 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.capstone.CapstoneApplicationTests]: CapstoneApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:26:37.858 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.capstone.CapstoneApplicationTests]
+22:26:37.921 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/CapstonePipeline/target/classes/com/capstone/CapstoneApplication.class]
+22:26:37.940 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.capstone.CapstoneApplication for test class com.capstone.CapstoneApplicationTests
+22:26:38.044 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.capstone.CapstoneApplicationTests]: using defaults.
+22:26:38.045 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+22:26:38.066 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+22:26:38.067 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+22:26:38.068 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@42f8285e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@26bab2f1, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3724af13, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@68ead359, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6b53bcc2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@180da663, org.springframework.test.context.event.EventPublishingTestExecutionListener@a43ce46, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@340da44c, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@424ebba3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@37052337, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2320fa6f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7a560583, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4d722ac9]
+22:26:38.073 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5cdd09b1 testClass = CapstoneApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@8c11eee testClass = CapstoneApplicationTests, locations = '{}', classes = '{class com.capstone.CapstoneApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@7e8dcdaa key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@376a0d86, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@53f3bdbd, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1169afe1, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@51bf5add, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@a1f72f5, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@27ae2fd0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+22:26:38.117 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.0)
+
+2021-06-02 22:26:38.669  INFO 98268 --- [           main] com.capstone.CapstoneApplicationTests    : Starting CapstoneApplicationTests using Java 11.0.10 on 172.31.17.24.lan with PID 98268 (started by 172.31.17.24 in /var/lib/jenkins/workspace/CapstonePipeline)
+2021-06-02 22:26:38.681  INFO 98268 --- [           main] com.capstone.CapstoneApplicationTests    : No active profile set, falling back to default profiles: default
+2021-06-02 22:26:41.147  INFO 98268 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-06-02 22:26:41.147  INFO 98268 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-06-02 22:26:41.148  INFO 98268 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2021-06-02 22:26:41.177  INFO 98268 --- [           main] com.capstone.CapstoneApplicationTests    : Started CapstoneApplicationTests in 3.043 seconds (JVM running for 4.468)
+2021-06-02 22:26:41.180  INFO 98268 --- [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2021-06-02 22:26:41.181  INFO 98268 --- [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /hello
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.capstone.HelloWorld
+           Method = com.capstone.HelloWorld#test()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"text/plain;charset=UTF-8", Content-Length:"10"]
+     Content type = text/plain;charset=UTF-8
+             Body = HelloWorld
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.975 s - in com.capstone.CapstoneApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.175 s
+[INFO] Finished at: 2021-06-02T22:26:42-05:00
+[INFO] ------------------------------------------------------------------------
+Post stage
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (ConstructWAR)
+[Pipeline] sh
++ mvn -DskipTests package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.capstone:capstone >------------------------
+[INFO] Building capstone 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ capstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ capstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ capstone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CapstonePipeline/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ capstone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ capstone ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-war-plugin:3.3.1:war (default-war) @ capstone ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [capstone] in [/var/lib/jenkins/workspace/CapstonePipeline/target/capstone]
+[INFO] Processing war project
+[INFO] Building war: /var/lib/jenkins/workspace/CapstonePipeline/target/capstone.war
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.5.0:repackage (repackage) @ capstone ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.842 s
+[INFO] Finished at: 2021-06-02T22:26:48-05:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (DockerBuild)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ docker build -t cordesg/testweb:36 .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:f389d161ddc879a8b9e64364d6383ea726aa7a2b582792c81967f5f34116cbee
+#1 transferring dockerfile: 37B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 sha256:a60c95c8f3efb9513c854700d219808d6bfb2ae36a8f03bcdded976af105f5c1
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/tomcat:latest
+#3 sha256:2e1a5a48bec6f981d6db4a1bf08f4151dd1dc07de026e03fd8de3234324d4f58
+#3 ...
+
+#4 [auth] library/tomcat:pull token for registry-1.docker.io
+#4 sha256:fbf34ca378b7883f2b3602a075d14d0fbc5c5065e6851860f115258f77a320a8
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/tomcat:latest
+#3 sha256:2e1a5a48bec6f981d6db4a1bf08f4151dd1dc07de026e03fd8de3234324d4f58
+#3 DONE 1.0s
+
+#5 [1/6] FROM docker.io/library/tomcat:latest@sha256:71703331e3e7f8581f2a8206a612dbeedfbc7bb8caeee972eadca1cc4a72e6b1
+#5 sha256:44806a5325060bd3be04cc636c98b1600c0a9ab4e3d21a908e8ac6d291a0ba7b
+#5 DONE 0.0s
+
+#8 [internal] load build context
+#8 sha256:18eac1fd6d79f834819c454b906c0d280703ac65409bc2f76f85283e5eed3107
+#8 transferring context: 17.34MB 0.5s done
+#8 DONE 0.5s
+
+#6 [2/6] RUN mv webapps webapps2
+#6 sha256:408da2923d2f99573c97260c8f0d9e40f3974a544dda15959420dd6486c79390
+#6 CACHED
+
+#7 [3/6] RUN mv webapps.dist/ webapps
+#7 sha256:ce96dac11905ae27421620bbe9f6aa63db24cf55eb756ba55dc64b66eac1dcf0
+#7 CACHED
+
+#9 [4/6] ADD ./tomcatMods/context.xml /usr/local/tomcat/webapps/manager/META-INF/
+#9 sha256:3ab1efc8e3d0224db2ab0ed980e49de049bed17bee60f295ce8828803547015c
+#9 CACHED
+
+#10 [5/6] ADD ./tomcatMods/tomcat-users.xml /usr/local/tomcat/conf/
+#10 sha256:0af7059583737ade081a909cc992d5db7df0993170a96e5dcbcaad370453eca5
+#10 CACHED
+
+#11 [6/6] ADD ./target/capstone.war /usr/local/tomcat/webapps/
+#11 sha256:5ecc9429abcd720561eecb8a794ffb46c4f38a82d5177234eecefd6ae96dbf9c
+#11 DONE 0.1s
+
+#12 exporting to image
+#12 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#12 exporting layers 0.0s done
+#12 writing image sha256:79137c119670ddb0c265a9a7cb82bf0021fd4e19c688122b2730a03f2956dc3e done
+#12 naming to docker.io/cordesg/testweb:36 done
+#12 DONE 0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (DockerPublish)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withDockerRegistry
+Using the existing docker config file.Removing blacklisted property: authsRemoving blacklisted property: credsStore$ docker login -u cordesg -p ******** https://registry.hub.docker.com
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ docker tag cordesg/testweb:36 registry.hub.docker.com/cordesg/testweb:36
+[Pipeline] isUnix
+[Pipeline] sh
++ docker push registry.hub.docker.com/cordesg/testweb:36
+The push refers to repository [registry.hub.docker.com/cordesg/testweb]
+0eef9a57274f: Preparing
+69ddf90a011e: Preparing
+c9e41977f948: Preparing
+5c11bf570105: Preparing
+0b94fe155caf: Preparing
+f67cac596996: Preparing
+a0fec0123aab: Preparing
+bc60b75d8ed4: Preparing
+6e3e04bb790d: Preparing
+a2149d86e909: Preparing
+ca6962f20214: Preparing
+39b7d16da6ba: Preparing
+34b28b28bc44: Preparing
+c850efa0dc51: Preparing
+f3c97e3bd1e2: Preparing
+a0fec0123aab: Waiting
+bc60b75d8ed4: Waiting
+6e3e04bb790d: Waiting
+a2149d86e909: Waiting
+ca6962f20214: Waiting
+39b7d16da6ba: Waiting
+34b28b28bc44: Waiting
+c850efa0dc51: Waiting
+f3c97e3bd1e2: Waiting
+f67cac596996: Waiting
+69ddf90a011e: Layer already exists
+c9e41977f948: Layer already exists
+0b94fe155caf: Layer already exists
+5c11bf570105: Layer already exists
+a0fec0123aab: Layer already exists
+f67cac596996: Layer already exists
+bc60b75d8ed4: Layer already exists
+6e3e04bb790d: Layer already exists
+ca6962f20214: Layer already exists
+a2149d86e909: Layer already exists
+c850efa0dc51: Layer already exists
+f3c97e3bd1e2: Layer already exists
+39b7d16da6ba: Layer already exists
+34b28b28bc44: Layer already exists
+0eef9a57274f: Pushed
+36: digest: sha256:1ce689beea6963438b95b15341ee8126150add2ed307c4de0f4c0d3f7ea5e015 size: 3467
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Remove)
+[Pipeline] sh
+++ docker ps -q
++ docker stop 1a234124bded
+1a234124bded
+[Pipeline] sh
+++ docker ps -a -q
++ docker rm 1a234124bded
+1a234124bded
+[Pipeline] sh
+++ docker images -q -f dangling=true
++ docker rmi
+"docker rmi" requires at least 1 argument.
+See 'docker rmi --help'.
+
+Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+Remove one or more images
++ true
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ docker run -d -p 8282:8080 cordesg/testweb:36
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
