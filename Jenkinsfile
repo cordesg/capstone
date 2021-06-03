@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        //Builds the .war file
+        //Builds the .war file.  We skip tests since we ran them above.
         stage('ConstructWAR') {
             steps {
               sh "mvn -DskipTests package"
