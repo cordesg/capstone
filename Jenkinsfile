@@ -26,16 +26,17 @@ pipeline {
         stage('DockerBuild') {
             steps {
                script {
-                   dockerApp = docker.build("cordesg/testweb" + ":$BUILD_NUMBER") 
+                   dockerImage = docker.build("cordesg/testweb" + ":$BUILD_NUMBER") 
                   }
                 }
         }
        stage('DockerPublish') {
             steps {
-               script {
-                   docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds") {
-                   dockerApp.push()
-                   }
+                echo "${pwd()}"
+               //script {
+                   //docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds") {
+                   //dockerImage.push()
+                //   }
                   }
                 }
         }
@@ -48,6 +49,11 @@ pipeline {
         
         stage('Deploy') {
                 steps {
+                    script {
+                        dockerImage.run("-p 8080:8080")
+                    }
+                    
+                    
                     echo "${pwd()}"
                 }
         }
