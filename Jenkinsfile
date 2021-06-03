@@ -37,7 +37,7 @@ pipeline {
                    //docker.withRegistry("https://registry.hub.docker.com", "dockerhubcreds") {
                    //dockerImage.push()
                 //   }
-                  }
+                //  }
                 }
         }
 
@@ -52,8 +52,6 @@ pipeline {
                     script {
                         dockerImage.run("-p 8080:8080")
                     }
-                    
-                    
                     echo "${pwd()}"
                 }
         }
