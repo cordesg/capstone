@@ -43,15 +43,15 @@ pipeline {
 
         stage('Remove') {
                 steps {
-                    echo "${pwd()}"
+                    sh "docker stop $(docker ps -q) || docker rm $(docker ps -a -q) || docker rmi $(docker images -q -f dangling=true)"
                 }
         }
         
         stage('Deploy') {
                 steps {
-                    script {
-                        dockerImage.run("-p 8181:8080")
-                    }
+                    //script {
+                    //    dockerImage.run("-p 8181:8080")
+                    //}
                     echo "${pwd()}"
                 }
         }
