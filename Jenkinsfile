@@ -46,7 +46,7 @@ pipeline {
                 }
         }
         //Runs through a series of shell commands to remove containers.  We continue execution on failure, as it is irrelevant.  The purpose is to
-        //any existing containers.
+        //remove any existing containers.
         stage('Remove') {
                 steps {
                     sh "docker stop \$(docker ps -q) || true"
